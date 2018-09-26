@@ -1,0 +1,36 @@
+<head>
+    {% include head/redirect.html %}
+    {% include head/meta.html %}
+    {% seo %}
+    {% if site.letGoogle_tag_manager %}
+        {% include head/google_tag_manager.html %}
+    {% endif %}
+    {% if site.letGoogle_analytics %}
+        {% include head/google_analytics.html %}
+    {% endif %}
+    {% if site.letFb_pixel %}
+        {% include head/fb_pixel.html %}
+    {% endif %}
+    {% if site.twitterUsername %}
+        {% include head/twitter_card.html %}
+    {% endif %}
+    {% feed_meta %}
+    {% include head/schema.html %}
+    {% include head/css.html %}
+    {% if site.BoolAnimateCSS %}
+        {% include head/animatecss.html %}
+    {% endif %}
+</head>
+
+
+
+
+          
+        
+        
+        
+       
+
+
+        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    

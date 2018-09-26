@@ -1,0 +1,9 @@
+<footer>
+    {% include footer/scripts_bootstrap.html %}
+    {% if site.letGoogleFonts %}
+        {% include footer/webfontloader.html %}
+    {% endif %}
+    {% if site.BoolAnimateCSS %}
+        {% include footer/wow.html %}
+    {% endif %}
+</footer>
