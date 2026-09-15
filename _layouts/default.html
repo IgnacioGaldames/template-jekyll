@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'es' }}">
+<html lang="{{ page.lang | default: site.lang | default: 'es' }}">
     {% include head.html %}
 <body>
+    <a class="visually-hidden-focusable skip-link" href="#main-content">Saltar al contenido</a>
+    {% if site.gtm_id and site.gtm_id != "" %}
+        {% include head/google_tag_manager_noscript.html %}
+    {% endif %}
     <header>
         {% include header.html %}
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
         {{ content }}
     </main>
 

@@ -3,5 +3,28 @@ layout: default
 ---
 
 <div class="container py-5">
-    {{ content }}
+    <section class="hero py-4 py-lg-5">
+        <p class="text-uppercase text-primary fw-semibold small mb-2">{{ site.tagline | default: "Una web clara, rápida y lista para crecer" }}</p>
+        <h1 class="display-4 fw-bold">{{ page.title | default: site.title }}</h1>
+        <div class="lead col-lg-8">{{ content }}</div>
+    </section>
+
+    {% if site.posts.size > 0 %}
+    <section class="mt-5" aria-labelledby="latest-posts">
+        <h2 id="latest-posts">Últimas publicaciones</h2>
+        <div class="row g-4 mt-1">
+            {% for post in site.posts limit: 3 %}
+            <article class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <p class="text-muted small mb-2">{{ post.date | date: "%d/%m/%Y" }}</p>
+                        <h3 class="h5 card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                        <p class="card-text">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 </div>
