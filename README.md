@@ -1,12 +1,12 @@
-# template-jekyll
+# Template Jekyll
 
-Template base para proyectos Jekyll con Bootstrap 5, SEO optimizado e integraciones de analytics configurables.
+Template base para crear sitios Jekyll rápidos, accesibles y listos para producción. Incluye Bootstrap 5, SEO, feed RSS, sitemap, analítica opcional y una compilación automática en GitHub Actions.
 
 ## Stack
 
 | Herramienta | Versión |
 |---|---|
-| Jekyll | latest |
+| Jekyll | 4.3 |
 | Bootstrap | 5.3 |
 | FontAwesome | 6.5 |
 | jekyll-seo-tag | ✅ |
@@ -22,13 +22,16 @@ bundle install
 # Servidor de desarrollo
 bundle exec jekyll serve
 
-# Build de producción
-JEKYLL_ENV=production bundle exec jekyll build
+# Build de producción (PowerShell)
+$env:JEKYLL_ENV="production"; bundle exec jekyll build --strict_front_matter
+
+# Build de producción (macOS/Linux)
+JEKYLL_ENV=production bundle exec jekyll build --strict_front_matter
 ```
 
 ## Configuración
 
-Edita [`_config.yml`](_config.yml) para personalizar el sitio:
+Antes de publicar, edita [`_config.yml`](_config.yml):
 
 ```yaml
 title: "Mi Sitio"
@@ -87,6 +90,17 @@ Edita [`_data/navigation.yml`](_data/navigation.yml):
   url: /about/
 ```
 
+## Estructura recomendada para nuevos proyectos
+
+1. Cambia `title`, `name`, `description`, `url` y `lang`.
+2. Reemplaza `index.md` y `about.md` por el contenido real.
+3. Actualiza [`_data/navigation.yml`](_data/navigation.yml).
+4. Añade imágenes a `assets/images/` y estilos en `assets/css/style.scss`.
+5. Crea artículos en `_posts/` con el formato `YYYY-MM-DD-titulo.md`.
+6. Configura los secretos o IDs de analítica solo cuando exista consentimiento.
+
+`baseurl` debe ser vacío para un dominio raíz y comenzar con `/` cuando el sitio vive en un subdirectorio. Usa siempre `relative_url` para enlaces internos.
+
 ## Analytics
 
 Las integraciones se activan automáticamente si el valor en `_config.yml` no está vacío.
@@ -97,6 +111,12 @@ Google Analytics solo se carga en producción (`JEKYLL_ENV=production`).
 | `google_analytics_id` | Google Analytics 4 |
 | `gtm_id` | Google Tag Manager |
 | `fb_pixel_id` | Meta (Facebook) Pixel |
+
+Google Analytics solo se carga en producción y respeta la preferencia `Do Not Track`. Las integraciones permanecen desactivadas cuando sus valores están vacíos.
+
+## Publicar en GitHub Pages
+
+El workflow incluido valida cada pull request. Para publicar desde GitHub Pages, selecciona **Settings > Pages > GitHub Actions** y conserva la rama `master` como rama principal.
 
 ## Licencia
 

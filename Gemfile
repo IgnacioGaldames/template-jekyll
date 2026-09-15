@@ -13,9 +13,8 @@ end
 # Herramientas de desarrollo (opcionales)
 # gem "jekyll-admin", group: :development
 
-# Windows: tzinfo y wdm
+# Windows: datos de zona horaria
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "wdm", "~> 0.1.0", platforms: [:mingw, :mswin, :x64_mingw]
 
 # GitHub Pages (alternativa a Jekyll directo — descomentar si usas GH Pages)
 # gem "github-pages", group: :jekyll_plugins

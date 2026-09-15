@@ -12,7 +12,7 @@ encoding: utf-8
 # Información del sitio
 # ------------------------------------------------------------
 title:       "Mi Sitio"                       # Nombre del sitio (aparece en <title> y SEO)
-name:        "Mi Sitio"                       # Nombre del autor / organización
+name:        "Tu nombre o empresa"            # Nombre del autor / organización
 email:       ""                               # Email de contacto (opcional)
 description: >-
   Descripción del sitio. Aparece en resultados de búsqueda
@@ -21,6 +21,9 @@ lang:        "es"                             # Idioma del sitio (ISO 639-1)
 baseurl:     ""                               # Subpath del sitio, ej: /blog (dejar vacío si es raíz)
 url:         "https://www.tusitio.com"        # URL base con protocolo, sin barra final
 title_image: ""                               # URL de imagen por defecto para OG/Twitter Cards
+logo: ""                                      # URL del logo para SEO (opcional)
+author:
+  name: "Tu nombre o empresa"
 
 # ------------------------------------------------------------
 # Redes sociales — dejar vacío ("") para desactivar
@@ -65,10 +68,15 @@ animate_css: false    # Activar Animate.css + WOW.js para animaciones scroll
 # ------------------------------------------------------------
 # Build settings
 # ------------------------------------------------------------
-show_excerpts: false
+show_excerpts: true
 markdown:      kramdown
 permalink:     pretty
 timezone:      America/Santiago
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
 
 sass:
   sass_dir: _sass
@@ -102,8 +110,12 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      categories: ""
-      tags: ""
+      author: ""
+
+  - scope:
+      path: "assets"
+    values:
+      sitemap: false
 
 # ------------------------------------------------------------
 # Exclusiones del build
@@ -116,5 +128,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - .ruby-version
   - README.md
   - LICENSE

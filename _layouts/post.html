@@ -14,7 +14,7 @@ layout: default
                 <div class="text-muted small">
                     {% if page.date %}
                     <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
-                        {{ page.date | date: "%d %B %Y" }}
+                        {{ page.date | date: "%d/%m/%Y" }}
                     </time>
                     {% endif %}
                     {% if page.author %}
@@ -23,7 +23,7 @@ layout: default
                     {% if page.categories.size > 0 %}
                     &nbsp;·&nbsp;
                     {% for cat in page.categories %}
-                        <a href="/category/{{ cat | slugify }}">{{ cat }}</a>{% unless forloop.last %}, {% endunless %}
+                        <span>{{ cat }}</span>{% unless forloop.last %}, {% endunless %}
                     {% endfor %}
                     {% endif %}
                 </div>
@@ -38,7 +38,7 @@ layout: default
                 <div>
                     <strong>Tags:</strong>
                     {% for tag in page.tags %}
-                    <a class="badge bg-secondary text-decoration-none" href="/tag/{{ tag | slugify }}">{{ tag }}</a>
+                    <span class="badge bg-secondary">{{ tag }}</span>
                     {% endfor %}
                 </div>
             </footer>
