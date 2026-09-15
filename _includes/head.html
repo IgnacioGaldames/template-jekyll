@@ -2,35 +2,28 @@
     {% include head/redirect.html %}
     {% include head/meta.html %}
     {% seo %}
-    {% if site.letGoogle_tag_manager %}
+
+    {% if site.gtm_id and site.gtm_id != "" %}
         {% include head/google_tag_manager.html %}
     {% endif %}
-    {% if site.letGoogle_analytics %}
+
+    {% if site.google_analytics_id and site.google_analytics_id != "" %}
         {% include head/google_analytics.html %}
     {% endif %}
-    {% if site.letFb_pixel %}
+
+    {% if site.fb_pixel_id and site.fb_pixel_id != "" %}
         {% include head/fb_pixel.html %}
     {% endif %}
-    {% if site.twitterUsername %}
+
+    {% if site.twitter_username and site.twitter_username != "" %}
         {% include head/twitter_card.html %}
     {% endif %}
+
     {% feed_meta %}
     {% include head/schema.html %}
     {% include head/css.html %}
-    {% if site.BoolAnimateCSS %}
+
+    {% if site.animate_css %}
         {% include head/animatecss.html %}
     {% endif %}
 </head>
-
-
-
-
-          
-        
-        
-        
-       
-
-
-        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    

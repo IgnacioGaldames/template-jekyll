@@ -1,10 +1,6 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
-title:
-author:
-redirect:
-summary:
+title: Inicio
 ---
+
+Bienvenido a tu nuevo sitio Jekyll. Edita este archivo (`index.md`) para personalizar la página principal.

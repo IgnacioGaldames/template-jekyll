@@ -1,22 +1,15 @@
 <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "name": "{{ site.name }}",
-      "url": "{{ site.url }}",
-        "sameAs": [
-            "http://www.facebook.com/{{site.facebookUsername}}",
-            "https://twitter.com/{{site.twitterUsername}}",
-            "https://www.instagram.com/{{site.instagramUsername}}/",
-            "https://www.linkedin.com/in/{{site.linkedinUsername}}",
-            "http://{{site.tumblrUrl}}.tumblr.com",
-            "https://plus.google.com/u/0/+{{site.googleplusUsername}}",
-            "https://www.youtube.com/{{site.youtubeUsername}}",
-            "https://www.pinterest.cl/{{site.pinterestUsername}}",
-            "https://www.flickr.com/photos/{{site.flickrUsername}}",
-            "https://www.behance.net/{{site.behanceUsername}}",
-            "https://www.goodreads.com/{{site.goodreadsUsername}}",
-            "https://amazon.com/author/{{site.amazonUsername}}"
-        ]
-    }
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ site.title | escape }}",
+    "url": "{{ site.url }}{{ site.baseurl }}"{% if site.description %},
+    "description": "{{ site.description | escape }}"{% endif %}{% if site.name %},
+    "author": {
+        "@type": "Person",
+        "name": "{{ site.name | escape }}"{% assign has_social = false %}{% if site.twitter_username and site.twitter_username != "" %}{% assign has_social = true %}{% endif %}{% if site.linkedin_username and site.linkedin_username != "" %}{% assign has_social = true %}{% endif %}{% if site.github_username and site.github_username != "" %}{% assign has_social = true %}{% endif %}{% if has_social %},
+        "sameAs": [{% assign separator = "" %}{% if site.twitter_username and site.twitter_username != "" %}{{ separator }}"https://twitter.com/{{ site.twitter_username }}"{% assign separator = "," %}{% endif %}{% if site.instagram_username and site.instagram_username != "" %}{{ separator }}"https://www.instagram.com/{{ site.instagram_username }}"{% assign separator = "," %}{% endif %}{% if site.linkedin_username and site.linkedin_username != "" %}{{ separator }}"https://www.linkedin.com/in/{{ site.linkedin_username }}"{% assign separator = "," %}{% endif %}{% if site.facebook_username and site.facebook_username != "" %}{{ separator }}"https://www.facebook.com/{{ site.facebook_username }}"{% assign separator = "," %}{% endif %}{% if site.youtube_username and site.youtube_username != "" %}{{ separator }}"https://www.youtube.com/{{ site.youtube_username }}"{% assign separator = "," %}{% endif %}{% if site.github_username and site.github_username != "" %}{{ separator }}"https://github.com/{{ site.github_username }}"{% assign separator = "," %}{% endif %}{% if site.pinterest_username and site.pinterest_username != "" %}{{ separator }}"https://www.pinterest.com/{{ site.pinterest_username }}"{% assign separator = "," %}{% endif %}{% if site.behance_username and site.behance_username != "" %}{{ separator }}"https://www.behance.net/{{ site.behance_username }}"{% assign separator = "," %}{% endif %}{% if site.flickr_username and site.flickr_username != "" %}{{ separator }}"https://www.flickr.com/photos/{{ site.flickr_username }}"{% assign separator = "," %}{% endif %}{% if site.tumblr_username and site.tumblr_username != "" %}{{ separator }}"https://{{ site.tumblr_username }}.tumblr.com"{% endif %}
+        ]{% endif %}
+    }{% endif %}
+}
 </script>

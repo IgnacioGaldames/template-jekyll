@@ -1,4 +1,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="{{site.title}}" />
+<meta name="author" content="{{ site.name | default: site.title }}">
+<meta name="theme-color" content="#ffffff">
+{% if page.description %}<meta name="description" content="{{ page.description }}">
+{% elsif page.summary %}<meta name="description" content="{{ page.summary }}">
+{% elsif site.description %}<meta name="description" content="{{ site.description }}">{% endif %}

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom" aria-label="Navegación principal">
+    <div class="container">
+        <!-- Logo / Nombre del sitio -->
+        <a class="navbar-brand fw-bold" href="{{ '/' | relative_url }}">
+            {{ site.title }}
+        </a>
+
+        <!-- Toggle para mobile -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMain"
+            aria-controls="navbarMain"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links de navegación -->
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto">
+                {% for item in site.data.navigation %}
+                <li class="nav-item">
+                    <a
+                        class="nav-link {% if page.url == item.url or page.url == item.url | append: '/' %}active" aria-current="page{% endif %}"
+                        href="{{ item.url | relative_url }}"
+                    >
+                        {{ item.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <!-- Redes sociales opcionales en la barra -->
+            <div class="navbar-nav ms-2 d-none d-lg-flex flex-row gap-2">
+                {% if site.twitter_username and site.twitter_username != "" %}
+                <a class="nav-link px-1" href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener" aria-label="Twitter">
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if site.github_username and site.github_username != "" %}
+                <a class="nav-link px-1" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if site.linkedin_username and site.linkedin_username != "" %}
+                <a class="nav-link px-1" href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if site.instagram_username and site.instagram_username != "" %}
+                <a class="nav-link px-1" href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener" aria-label="Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
